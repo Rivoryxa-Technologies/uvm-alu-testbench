@@ -1,11 +1,11 @@
 # uvm-alu-testbench
 
-A complete, well-structured UVM testbench for a pipelined 32-bit ALU. It is a
-compact reference for how we build class-based verification environments:
-sequence-driven stimulus, a self-checking scoreboard with a reference model,
+A complete, well structured UVM testbench for a pipelined 32-bit ALU. It is a
+compact reference for how we build class based verification environments:
+sequence driven stimulus, a self checking scoreboard with a reference model,
 functional coverage, and a reusable agent.
 
-> **Verified:** the DUT and interface lint clean under Verilator. The UVM class environment needs a UVM-capable simulator (Questa, VCS, or Xcelium) to elaborate and run.
+> **Verified:** the DUT and interface lint clean under Verilator. The UVM class environment needs a UVM capable simulator (Questa, VCS, or Xcelium) to elaborate and run.
 
 ## What is in it
 
@@ -22,7 +22,7 @@ Makefile        run targets for Questa, VCS, and Xcelium
 
 - **Sequence item** carries `a`, `b`, `op`, and the captured `result`.
 - **Driver** applies operands over a clocking block, one transaction per beat.
-- **Monitor** reconstructs each transaction, accounting for the one-cycle
+- **Monitor** reconstructs each transaction, accounting for the one cycle
   pipeline latency, and broadcasts it on an analysis port.
 - **Scoreboard** predicts the result with a reference model and compares.
 - **Coverage** subscriber closes an opcode coverpoint.
@@ -30,7 +30,7 @@ Makefile        run targets for Questa, VCS, and Xcelium
 
 ## Running it
 
-UVM needs a UVM-capable simulator (UVM 1.2 or later). Pick the one you have:
+UVM needs a UVM capable simulator (UVM 1.2 or later). Pick the one you have:
 
 ```bash
 make questa     # or: make vcs / make xcelium
@@ -50,6 +50,6 @@ scale up for real IP blocks.
 
 ## What Rivoryxa delivers with this
 
-This is our public reference structure for a UVM environment. For clients we build block-level UVM testbenches with a reference model, constrained-random sequences, functional coverage, and a self-checking scoreboard. We run them on the client's UVM simulator, or on Verilator with the open-source Accellera UVM library when no commercial licence is available, and we deliver the run logs alongside the code.
+This is our public reference structure for a UVM environment. For clients we build block level UVM testbenches with a reference model, constrained random sequences, functional coverage, and a self checking scoreboard. We run them on the client's UVM simulator, or on Verilator with the open source Accellera UVM library when no commercial licence is available, and we deliver the run logs alongside the code.
 
 See the [Rivoryxa profile](https://github.com/Rivoryxa-Technologies) for our full service list, or reach us on [LinkedIn](https://www.linkedin.com/company/rivoryxa-technologies/).
