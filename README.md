@@ -5,6 +5,8 @@ compact reference for how we build class-based verification environments:
 sequence-driven stimulus, a self-checking scoreboard with a reference model,
 functional coverage, and a reusable agent.
 
+> **Verified:** the DUT and interface lint clean under Verilator. The UVM class environment needs a UVM-capable simulator (Questa, VCS, or Xcelium) to elaborate and run.
+
 ## What is in it
 
 ```
