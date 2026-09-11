@@ -46,8 +46,10 @@ make vcs TEST=alu_base_test
 
 The DUT here is intentionally simple so the testbench structure stays readable.
 The same skeleton (agent, scoreboard, coverage, layered sequences) is what we
-scale up for real blocks and SoC-level verification. Want this extended with a
-register model, more sequences, or a constrained-random test plan? Reach out.
+scale up for real IP blocks.
 
----
-Maintained by [Rivoryxa Technologies](https://www.linkedin.com/company/rivoryxa-technologies/).
+## What Rivoryxa delivers with this
+
+This is our public reference structure for a UVM environment. For clients we build block-level UVM testbenches with a reference model, constrained-random sequences, functional coverage, and a self-checking scoreboard. We run them on the client's UVM simulator, or on Verilator with the open-source Accellera UVM library when no commercial licence is available, and we deliver the run logs alongside the code.
+
+See the [Rivoryxa profile](https://github.com/Rivoryxa-Technologies) for our full service list, or reach us on [LinkedIn](https://www.linkedin.com/company/rivoryxa-technologies/).
