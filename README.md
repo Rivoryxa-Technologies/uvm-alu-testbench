@@ -61,3 +61,5 @@ Verilator 5.050, macOS arm64. It excludes `tb/alu_pkg.sv` and `tb/tb_top.sv`, so
 it does not elaborate or run the UVM classes, scoreboard or coverage. Questa,
 VCS and Xcelium were unavailable in this audit. A complete UVM regression remains
 unverified; no passing simulation claim follows from this lint check.
+
+The raw output is in `evidence/audit-2026-09-15.log`.
