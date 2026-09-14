@@ -50,6 +50,14 @@ scale up for real IP blocks.
 
 ## What Rivoryxa delivers with this
 
-This is our public reference structure for a UVM environment. For clients we build block level UVM testbenches with a reference model, constrained random sequences, functional coverage, and a self checking scoreboard. We run them on the client's UVM simulator, or on Verilator with the open source Accellera UVM library when no commercial licence is available, and we deliver the run logs alongside the code.
+This is our public reference structure for a UVM environment. For clients we build block level UVM testbenches with a reference model, constrained random sequences, functional coverage, and a self checking scoreboard. The simulator and supported features must be agreed and validated for the client environment. This repository has not demonstrated a UVM run on Verilator; its implemented run targets are Questa, VCS and Xcelium.
 
 See the [Rivoryxa profile](https://github.com/Rivoryxa-Technologies) for our full service list, or reach us on [LinkedIn](https://www.linkedin.com/company/rivoryxa-technologies/).
+
+## Rechecked scope, 15 September 2026
+
+`verilator --lint-only -sv --timing rtl/alu.sv tb/alu_if.sv` exits zero on
+Verilator 5.050, macOS arm64. It excludes `tb/alu_pkg.sv` and `tb/tb_top.sv`, so
+it does not elaborate or run the UVM classes, scoreboard or coverage. Questa,
+VCS and Xcelium were unavailable in this audit. A complete UVM regression remains
+unverified; no passing simulation claim follows from this lint check.
