@@ -5,7 +5,9 @@ compact reference for how we build class based verification environments:
 sequence driven stimulus, a self checking scoreboard with a reference model,
 functional coverage, and a reusable agent.
 
-> **Verified:** the DUT and interface lint clean under Verilator. The UVM class environment needs a UVM capable simulator (Questa, VCS, or Xcelium) to elaborate and run.
+> **Executed evidence:** the class environment at revision `6f885404` now has a [reproducible Verilator 5.050 and Accellera UVM 2020.3.1 runner](https://github.com/Rivoryxa-Technologies/uvm-execution-verification). Three seeds each produce 200 scoreboard matches and zero mismatches/errors. A separate fault-enabled run demonstrates scoreboard mismatch detection. The runner records its exact test-only DUT instrumentation and source hashes. The earlier DUT/interface lint result remains a separate check.
+>
+> This Verilator run ignores the class-member opcode covergroup and uses `UVM_NO_DPI`. It demonstrates executed classes and scoreboard checking, not functional coverage collection or validation of every UVM feature. Commercial simulator targets below have not been independently rerun as part of this evidence update.
 
 ## What is in it
 
@@ -25,12 +27,14 @@ Makefile        run targets for Questa, VCS, and Xcelium
 - **Monitor** reconstructs each transaction, accounting for the one cycle
   pipeline latency, and broadcasts it on an analysis port.
 - **Scoreboard** predicts the result with a reference model and compares.
-- **Coverage** subscriber closes an opcode coverpoint.
+- **Coverage** subscriber defines an opcode coverpoint. Collection depends on simulator support; the recorded Verilator run ignores it.
 - **Agent, env, and test** wire it together and run a randomized sequence.
 
 ## Running it
 
-UVM needs a UVM capable simulator (UVM 1.2 or later). Pick the one you have:
+For the measured open-source execution, use `make test` in the [pinned execution runner](https://github.com/Rivoryxa-Technologies/uvm-execution-verification). It fetches this immutable source revision and the UVM library automatically.
+
+The following commercial simulator make targets are included for adaptation; they are not the commands behind the published execution evidence:
 
 ```bash
 make questa     # or: make vcs / make xcelium
